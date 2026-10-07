@@ -1,0 +1,7 @@
+{
+  "name":"solarscope-india-ultra",
+  "version":"1.0.0",
+  "private":true,
+  "description":"Professional full-stack college project: Assessment of Solar Energy Potential in Different Regions of India",
+  "scripts":{"start":"node server.js"}
+}

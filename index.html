@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#061b2a" />
+  <meta name="description" content="SolarScope India — interactive academic assessment of solar energy potential across different regions of India." />
+  <title>SolarScope India — Solar Energy Potential Assessment</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="scrollProgress" id="scrollProgress"></div>
+
+  <header class="navShell" id="navShell">
+    <a href="#home" class="brand" aria-label="SolarScope India home">
+      <span class="brandMark"><span class="sunCore"></span><i></i><i></i><i></i><i></i></span>
+      <span class="brandText"><b>SolarScope</b><small>INDIA</small></span>
+    </a>
+    <nav id="navLinks">
+      <a href="#overview">Overview</a><a href="#regions">Regions</a><a href="#states">States</a><a href="#capacity">Capacity</a><a href="#method">Method</a><a href="#calculator">Calculator</a>
+    </nav>
+    <div class="navActions">
+      <span class="apiBadge" id="apiBadge"><i></i><span>Offline-ready</span></span>
+      <button class="navBtn" id="presentBtn" title="Presentation mode">▶ Present</button>
+      <button class="menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" data-present-title="Introduction">
+      <div class="heroSky"></div>
+      <div class="solarHorizon" aria-hidden="true">
+        <div class="heroSun"><span></span></div>
+        <div class="mountains m1"></div><div class="mountains m2"></div>
+        <div class="panelField">
+          <div class="panelRow row1"></div><div class="panelRow row2"></div><div class="panelRow row3"></div>
+        </div>
+      </div>
+      <div class="heroVignette"></div>
+      <div class="heroGrid"></div>
+      <div class="heroContent reveal">
+        <div class="projectTag"><span></span> B.Tech Academic Research Project</div>
+        <h1>India has the sunlight.<br><em>Where can it create the most impact?</em></h1>
+        <p>SolarScope India transforms government solar data into a visual, interactive assessment of regional opportunity, technical potential and real deployment.</p>
+        <div class="heroActions">
+          <a class="button primary magnetic" href="#overview">Explore the assessment <b>↘</b></a>
+          <button class="button glass magnetic" id="tourBtn">Start guided tour <b>▶</b></button>
+        </div>
+        <div class="trustRow"><span>VERIFIED SOURCES</span><b>MNRE</b><i>•</i><b>NISE</b><i>•</i><b>PIB</b></div>
+      </div>
+      <aside class="heroMetric glassCard reveal delay1" data-tilt>
+        <span class="micro">INDIA SOLAR RESOURCE</span>
+        <div class="bigMetric"><b data-counter="4">4</b><em>–7</em><small>kWh/m²/day</small></div>
+        <p>Typical daily solar radiation received across most parts of India.</p>
+        <div class="sunArc"><span class="arcSun">☀</span></div>
+        <small>Source: MNRE Solar Overview</small>
+      </aside>
+      <div class="heroStats reveal delay2">
+        <div><span>LEGACY POTENTIAL</span><b>748.99</b><small>GWp</small></div>
+        <div><span>NEW ASSESSMENT</span><b>3,343</b><small>GWp</small></div>
+        <div><span>INSTALLED</span><b>168.04</b><small>GW</small></div>
+      </div>
+      <a class="scrollCue" href="#overview"><i></i><span>Scroll to explore</span></a>
+    </section>
+
+    <section class="ticker" aria-label="Solar facts"><div id="tickerInner"></div></section>
+
+    <section class="section light" id="overview" data-present-title="National Snapshot">
+      <div class="sectionHead reveal">
+        <div><p class="eyebrow">01 / NATIONAL SNAPSHOT</p><h2>Potential is not the same as <span>installed power.</span></h2></div>
+        <p>We separate solar resource, technical potential and installed capacity so the project remains scientifically meaningful.</p>
+      </div>
+      <div class="metricGrid" id="metricGrid"></div>
+      <div class="storyRail">
+        <article class="storyCard desert reveal" data-tilt><div class="storyVisual"><div class="miniPanels"></div></div><div class="storyText"><span>WESTERN INDIA</span><h3>High sunlight + open land</h3><p>Large dry land areas and strong irradiation make western India especially suitable for utility-scale solar.</p></div></article>
+        <article class="storyCard city reveal delay1" data-tilt><div class="storyVisual"><div class="skyline"></div></div><div class="storyText"><span>URBAN INDIA</span><h3>Rooftops become the resource</h3><p>Where open land is scarce, distributed rooftop systems can generate electricity close to consumers.</p></div></article>
+        <article class="storyCard gridStory reveal delay2" data-tilt><div class="storyVisual"><div class="gridLines"></div></div><div class="storyText"><span>DEPLOYMENT REALITY</span><h3>Sunlight alone is not enough</h3><p>Grid access, terrain, roads, land ownership, ecology and demand influence what can actually be built.</p></div></article>
+      </div>
+      <div class="methodCompare reveal">
+        <div class="compareIcon">≠</div>
+        <div><span>WHY TWO NATIONAL ESTIMATES?</span><h3>748.99 GWp and 3,343 GWp answer different questions.</h3><p>The older NISE assessment gives a consistent state-wise comparison. The newer geospatial assessment applies different land screening and infrastructure assumptions, producing a much larger feasible ground-mounted estimate.</p></div>
+        <div class="compareNumbers"><b>748.99<small>GWp</small></b><i>vs</i><b>3,343<small>GWp</small></b></div>
+      </div>
+    </section>
+
+    <section class="cinematicBreak" data-present-title="What controls solar potential?">
+      <div class="breakGlow"></div><div class="breakGrid"></div>
+      <div class="breakContent reveal"><p class="eyebrow lightText">WHAT CONTROLS SOLAR POTENTIAL?</p><h2>Sunlight is only <em>the beginning.</em></h2><div class="factorCloud"><span>Solar radiation</span><span>Land availability</span><span>Terrain</span><span>Grid access</span><span>Environment</span><span>Demand</span></div></div>
+    </section>
+
+    <section class="section regionsSection" id="regions" data-present-title="Regional Assessment">
+      <div class="sectionHead reveal"><div><p class="eyebrow">02 / REGIONAL ASSESSMENT</p><h2>One country.<br><span>Six different solar stories.</span></h2></div><p>Select a region to see how geography, land availability and state-wise estimates change the picture.</p></div>
+      <div class="regionStage">
+        <div class="indiaViz reveal" data-tilt>
+          <div class="mapGlow"></div>
+          <svg class="indiaMap" viewBox="0 0 620 720" role="img" aria-label="Conceptual map of India for regional solar assessment">
+            <defs><linearGradient id="indiaGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c3c59"/><stop offset="1" stop-color="#167e83"/></linearGradient><filter id="soft"><feDropShadow dx="0" dy="15" stdDeviation="18" flood-opacity=".22"/></filter></defs>
+            <path filter="url(#soft)" d="M240 36l44 34 28 72 41 43 1 62 34 30-10 58 18 65-25 56-71 66-16 47-38 38-25 80-51-6-50-51-76-7-25-75-58-33 13-68 33-47-16-67 29-49 12-81 33-31 51 8 52-41z" fill="url(#indiaGrad)"/>
+            <path d="M493 632l42 36-59 8z" fill="#167e83" opacity=".8"/>
+            <g class="mapLinks" stroke="#84e6dd" stroke-width="4" opacity=".55"><path d="M168 175L288 240L354 150"/><path d="M288 240L190 412L380 465L436 590"/></g>
+            <g class="mapDots" fill="#ffd166" stroke="#fff" stroke-width="5"><circle cx="168" cy="175" r="10"/><circle cx="288" cy="240" r="10"/><circle cx="354" cy="150" r="10"/><circle cx="190" cy="412" r="10"/><circle cx="380" cy="465" r="10"/><circle cx="436" cy="590" r="10"/></g>
+          </svg>
+          <div class="mapLabel">Interactive opportunity map</div>
+          <div class="regionButtons" id="regionButtons"></div>
+        </div>
+        <article class="regionPanel glassCard reveal delay1">
+          <div class="panelTop"><span class="micro">SELECTED REGION</span><span class="live"><i></i> LIVE COMPARISON</span></div>
+          <h3 id="regionTitle">West</h3>
+          <div class="scoreLine"><span>Solar opportunity</span><div class="scoreBar"><i id="regionMeter"></i></div><b id="regionScore">Very High</b></div>
+          <p id="regionText"></p>
+          <div class="regionFacts" id="regionFacts"></div>
+          <div class="strategyBox"><span>BEST-FIT STRATEGY</span><b id="regionStrategy"></b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section statesSection light" id="states" data-present-title="State-wise Potential">
+      <div class="sectionHead reveal"><div><p class="eyebrow">03 / STATE-WISE DATASET</p><h2>Compare states.<br><span>Let the numbers lead.</span></h2></div><p>All values in this section use the same legacy NISE/MNRE dataset so the comparison remains internally consistent.</p></div>
+      <div class="stateToolbar reveal"><label>Explore state<select id="stateSelect"></select></label><div class="toolbarActions"><button class="chipBtn" id="sortBtn">↕ Sort: highest</button><button class="chipBtn" id="downloadCsv">↓ Download CSV</button></div></div>
+      <div class="stateGrid">
+        <article class="stateSpotlight reveal" data-tilt><span class="micro">SELECTED STATE</span><h3 id="stateName">Rajasthan</h3><div class="stateValue"><b id="statePotential">142.31</b><span>GWp</span></div><p id="stateInsight"></p><div class="rankPill"><span>RANK</span><b id="stateRank">#1</b></div></article>
+        <article class="chartPanel reveal delay1"><div class="chartHead"><div><span class="micro">LEGACY NISE DATASET</span><h3>Top states by estimated solar potential</h3></div><b>GWp</b></div><div id="barChart" class="barChart"></div></article>
+      </div>
+    </section>
+
+    <section class="section capacitySection" id="capacity" data-present-title="Installed Solar Capacity">
+      <div class="sectionHead reveal"><div><p class="eyebrow">04 / FROM POTENTIAL TO REALITY</p><h2>India's solar story is already <span>moving fast.</span></h2></div><p>Installed capacity shows how much of the opportunity has already turned into real infrastructure.</p></div>
+      <div class="capacityGrid">
+        <article class="donutCard reveal"><div class="donutWrap"><svg viewBox="0 0 240 240" class="donutSvg"><circle class="donutBase" cx="120" cy="120" r="92"/><circle class="donutSeg seg1" cx="120" cy="120" r="92"/><circle class="donutSeg seg2" cx="120" cy="120" r="92"/><circle class="donutSeg seg3" cx="120" cy="120" r="92"/><circle class="donutSeg seg4" cx="120" cy="120" r="92"/></svg><div class="donutCenter"><b>168.04</b><span>GW total</span></div></div><div class="growthBadge"><b>≈60×</b><span>growth since Mar 2014</span></div></article>
+        <article class="capacityList reveal delay1" id="capacityList"></article>
+      </div>
+      <div class="timeline reveal"><div class="timelineTrack"><i></i></div><div class="timePoint first"><span></span><b>Mar 2014</b><strong>2.8 GW</strong><small>Installed solar</small></div><div class="timePoint middle"><span></span><b>2020s</b><strong>Rapid scale-up</strong><small>Solar parks + rooftops</small></div><div class="timePoint last"><span></span><b>Aug 2026</b><strong>168.04 GW</strong><small>Cumulative installed</small></div></div>
+    </section>
+
+    <section class="section methodSection light" id="method" data-present-title="Methodology">
+      <div class="sectionHead reveal"><div><p class="eyebrow">05 / METHODOLOGY</p><h2>A transparent student framework.<br><span>Not a black box.</span></h2></div><p>This is an academic comparison framework, not a bankable project-design or site-engineering study.</p></div>
+      <div class="methodFlow">
+        <article class="methodCard reveal"><span>01</span><div class="methodSymbol">☀</div><h3>Solar Resource</h3><p>Start with sunlight availability: about 4–7 kWh/m²/day across most of India.</p></article>
+        <article class="methodCard reveal delay1"><span>02</span><div class="methodSymbol">⌖</div><h3>Land & Geography</h3><p>Consider usable land, slope, terrain, settlement pressure and environmental constraints.</p></article>
+        <article class="methodCard reveal delay2"><span>03</span><div class="methodSymbol">▥</div><h3>Technical Potential</h3><p>Use published NISE/MNRE estimates to compare states on a consistent basis.</p></article>
+        <article class="methodCard reveal delay3"><span>04</span><div class="methodSymbol">⚡</div><h3>Deployment Feasibility</h3><p>Factor in grid access, roads, substations, rooftop options and local demand.</p></article>
+      </div>
+      <div class="formulaStage reveal"><div><span class="micro lightText">EDUCATIONAL FORMULA</span><h3>Annual Energy ≈ <em>PV Capacity</em> × <em>Peak-Sun-Hours</em> × 365 × <em>Performance Ratio</em></h3></div><p>A performance ratio near 0.75–0.85 is used for a quick educational estimate. The calculator defaults to 0.80.</p></div>
+      <div class="warning reveal"><b>!</b><div><h3>Important limitation</h3><p>This website does not replace site-specific GIS analysis, irradiation time-series, shading studies, grid-interconnection studies, land-title checks or detailed techno-economic modelling.</p></div></div>
+    </section>
+
+    <section class="calculatorScene" id="calculator" data-present-title="Solar Generation Calculator">
+      <div class="calcBackground"></div>
+      <div class="section calcInner">
+        <div class="sectionHead darkHead reveal"><div><p class="eyebrow lightText">06 / STUDENT CALCULATOR</p><h2>Turn sunlight into an <span>energy estimate.</span></h2></div><p>Change the system assumptions and watch the output update instantly.</p></div>
+        <div class="calculatorCard reveal">
+          <div class="calcControls">
+            <label><span>System size</span><b><i id="sizeVal">10</i> kW</b><input id="sizeRange" type="range" min="1" max="500" value="10"></label>
+            <label><span>Peak sun hours</span><b><i id="sunVal">5.2</i> h/day</b><input id="sunRange" type="range" min="3.5" max="7" step="0.1" value="5.2"></label>
+            <label><span>Performance ratio</span><b><i id="prVal">80</i>%</b><input id="prRange" type="range" min="65" max="90" value="80"></label>
+            <div class="apiCalc"><i></i><span id="calcStatus">Instant local estimate</span></div>
+          </div>
+          <div class="calcOutput"><span class="micro">ESTIMATED ANNUAL GENERATION</span><strong id="annualEnergy">15,184</strong><h3>kWh / year</h3><p>≈ <b id="dailyEnergy">41.6</b> kWh/day average</p><div class="energyBars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>Educational estimate only. Actual output depends on equipment, temperature, tilt, shading, soiling, inverter losses and local weather.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section conclusionSection" data-present-title="Conclusion">
+      <div class="conclusionCard reveal">
+        <div class="conclusionScene"><div class="conclusionSun"></div><div class="conclusionPanels"></div></div>
+        <div class="conclusionShade"></div>
+        <div class="conclusionContent"><p class="eyebrow lightText">PROJECT CONCLUSION</p><h2>India's solar opportunity is huge.<br><em>But it is not uniform.</em></h2><p>Western and several central and southern states offer strong utility-scale opportunity, while dense urban areas can gain more from rooftop and distributed solar. Turning theoretical potential into real electricity depends on land suitability, grids, technology, policy, finance and environmental responsibility.</p><div class="takeaways"><span><b>01</b> Rajasthan leads the legacy state dataset.</span><span><b>02</b> Newer geospatial studies show much larger national potential.</span><span><b>03</b> India already had 168.04 GW installed by Aug 2026.</span></div></div>
+      </div>
+    </section>
+
+    <section class="section sourcesSection light" id="sources" data-present-title="Sources">
+      <div class="sectionHead reveal"><div><p class="eyebrow">07 / REFERENCES</p><h2>Every major number is <span>traceable.</span></h2></div><p>We prioritize Government of India and NISE sources so the figures can be independently verified in the final report.</p></div>
+      <div id="sourcesGrid" class="sourcesGrid"></div>
+    </section>
+
+    <section class="section projectSection" id="team" data-present-title="Project Team">
+      <div class="projectCard reveal"><div><span class="micro lightText">ACADEMIC PROJECT</span><h2>SolarScope India</h2><p>Assessment of Solar Energy Potential in Different Regions of India</p></div><div class="projectDetails"><span><small>Student Name</small><b>Your Name</b></span><span><small>Roll Number</small><b>000000</b></span><span><small>Department</small><b>Your Department</b></span><span><small>Project Guide</small><b>Faculty Name</b></span></div></div>
+    </section>
+  </main>
+
+  <footer><div class="brand footerBrand"><span class="brandMark"><span class="sunCore"></span><i></i><i></i><i></i><i></i></span><span class="brandText"><b>SolarScope</b><small>INDIA</small></span></div><p>Academic research project • Frontend + Backend API • Data: MNRE, NISE & PIB</p><a href="#home">Back to top ↑</a></footer>
+
+  <div class="presentationHud" id="presentationHud"><button id="prevSlide">←</button><div><span id="presentIndex">01</span><b id="presentTitle">Introduction</b></div><button id="nextSlide">→</button><button class="exitPresent" id="exitPresent">Exit ✕</button></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="data-fallback.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
